@@ -80,18 +80,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ============================================
-// XỬ LÝ MODAL (NHÓM & BÁO CÁO)
+// XỬ LÝ MODAL NHÓM
 // ============================================
 const groupModal = document.getElementById('groupModal');
-const reportModal = document.getElementById('reportModal');
 
 document.getElementById('openGroupBtn').addEventListener('click', () => groupModal.classList.add('active'));
 document.getElementById('closeGroupBtn').addEventListener('click', () => groupModal.classList.remove('active'));
 groupModal.addEventListener('click', (e) => { if (e.target === groupModal) groupModal.classList.remove('active'); });
-
-document.getElementById('openReportBtn').addEventListener('click', () => reportModal.classList.add('active'));
-document.getElementById('closeReportBtn').addEventListener('click', () => reportModal.classList.remove('active'));
-reportModal.addEventListener('click', (e) => { if (e.target === reportModal) reportModal.classList.remove('active'); });
 
 // ============================================
 // RENDER TIMELINE
