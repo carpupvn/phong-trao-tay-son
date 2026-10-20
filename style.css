@@ -17,36 +17,36 @@ body {
   height: 100vh;
 }
 
-/* ===== HIỆU ỨNG TRƯỢT NGANG SIÊU MƯỢT ===== */
+/* ===== HIỆU ỨNG TRƯỢT NGANG THUẦN TÚY ===== */
 .presentation { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
 
 .slide {
   position: absolute; inset: 0;
   padding: 40px 60px 80px;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0;
-  pointer-events: none; /* Tránh click nhầm vào slide bị ẩn */
+  
+  /* Chỉ dùng transform để trượt, không dùng opacity */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none; /* Ngăn click vào slide bị ẩn */
+  
+  /* Mặc định đẩy sang phải */
+  transform: translateX(100%);
   z-index: 1;
-  /* Dùng cubic-bezier để tạo gia tốc mượt mà, không bị đơ */
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
 }
 
 .slide.active {
-  opacity: 1; 
-  pointer-events: auto;
   transform: translateX(0);
+  pointer-events: auto;
   z-index: 2;
 }
 
 .slide.prev-slide {
   transform: translateX(-100%);
-  opacity: 0;
   z-index: 0;
 }
 
 .slide.next-slide {
   transform: translateX(100%);
-  opacity: 0;
   z-index: 0;
 }
 
