@@ -23,30 +23,37 @@ function updateNav() {
 }
 
 function goToSlide(n) {
-  if (n < 0 || n >= slides.length) return;
+  if (n < 0 || n >= slides.length || n === currentSlide) return;
   
-  // Slide cũ trượt sang trái
+  const direction = n > currentSlide ? 1 : -1; // 1 là tiến, -1 là lùi
   const prevSlide = slides[currentSlide];
-  prevSlide.classList.remove('active');
-  prevSlide.classList.add('prev');
+  const nextSlide = slides[n];
+
+  // Xóa các class cũ
+  prevSlide.classList.remove('active', 'slide-in-left', 'slide-in-right');
+  nextSlide.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+
+  // Thiết lập hiệu ứng trượt đi cho slide cũ
+  if (direction === 1) prevSlide.classList.add('slide-out-left');
+  else prevSlide.classList.add('slide-out-right');
+
+  // Thiết lập vị trí xuất phát cho slide mới
+  if (direction === 1) nextSlide.classList.add('slide-in-right');
+  else nextSlide.classList.add('slide-in-left');
+
+  // Ép trình duyệt nhận diện vị trí mới
+  void nextSlide.offsetWidth;
+
+  // Kích hoạt trượt vào
+  nextSlide.classList.remove('slide-in-right', 'slide-in-left');
+  nextSlide.classList.add('active');
 
   currentSlide = n;
-  const nextSlide = slides[currentSlide];
-  
-  // Đảm bảo slide mới không bị kẹt ở trạng thái prev
-  nextSlide.classList.remove('prev');
-  
-  // Ép trình duyệt nhận diện lại trạng thái (để kích hoạt transition)
-  void nextSlide.offsetWidth;
-  
-  // Kích hoạt trượt vào
-  nextSlide.classList.add('active');
-  
   slides[currentSlide].scrollTop = 0;
   updateNav();
   
   if (currentSlide === 3 && map) {
-    setTimeout(() => map.invalidateSize(), 200);
+    setTimeout(() => map.invalidateSize(), 300);
   }
 }
 
