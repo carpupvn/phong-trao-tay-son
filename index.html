@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phong trào Tây Sơn – Lịch sử 11</title>
-    <!-- Leaflet CSS -->
+    <title>Phong trào Tây Sơn – Nhóm 8</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="presentation" id="presentation">
 
-        <!-- SLIDE 1: TIÊU ĐỀ -->
+        <!-- SLIDE 1: TIÊU ĐỀ & THÔNG TIN NHÓM -->
         <section class="slide active" id="slide-1">
-            <div class="title-slide">
+            <div class="title-slide morph-target">
                 <h1>PHONG TRÀO TÂY SƠN</h1>
                 <p class="subtitle">Cuộc khởi nghĩa nông dân vĩ đại thế kỷ XVIII</p>
                 <p class="source">Mục 3 – Bài 8 – SGK Lịch sử 11 (Kết nối tri thức)</p>
-                <div class="group-info">
-                    <p><strong>Nhóm:</strong> ...................</p>
-                    <p><strong>Thành viên:</strong> ...................</p>
-                </div>
+                
+                <button class="group-btn" id="openGroupBtn">NHÓM 8 - Bấm để xem chi tiết</button>
                 <p class="hint">Dùng phím ← → hoặc Space để chuyển slide</p>
             </div>
         </section>
 
         <!-- SLIDE 2: BỐI CẢNH -->
         <section class="slide" id="slide-2">
-            <div class="slide-content">
+            <div class="slide-content morph-target">
                 <h2>1. Bối cảnh lịch sử</h2>
                 <div class="two-col">
                     <div class="col">
@@ -56,39 +52,43 @@
 
         <!-- SLIDE 3: DÒNG THỜI GIAN -->
         <section class="slide" id="slide-3">
-            <div class="slide-content">
+            <div class="slide-content morph-target">
                 <h2>2. Dòng thời gian (1771 – 1789)</h2>
                 <div class="timeline" id="timeline"></div>
             </div>
         </section>
 
-        <!-- SLIDE 4: BẢN ĐỒ SỐ -->
+        <!-- SLIDE 4: BẢN ĐỒ SỐ TƯƠNG TÁC TỪNG BƯỚC -->
         <section class="slide" id="slide-4">
-            <div class="slide-content map-slide">
-                <h2>3. Bản đồ số – Diễn biến chính</h2>
-                <div class="map-wrapper">
-                    <div id="map"></div>
-                    <div class="map-legend">
-                        <div class="legend-item"><span class="dot start"></span> Khởi nghĩa bùng nổ</div>
-                        <div class="legend-item"><span class="dot battle"></span> Trận đánh lớn</div>
-                        <div class="legend-item"><span class="dot capital"></span> Kinh đô / thành trì</div>
-                        <div class="legend-item"><span class="line"></span> Đường hành quân (chuyển động)</div>
+            <div class="slide-content map-slide morph-target">
+                <h2>3. Diễn biến trên bản đồ số</h2>
+                
+                <div class="map-layout">
+                    <!-- Cột trái: Nội dung text thay đổi theo bước -->
+                    <div class="map-info-panel">
+                        <div class="step-indicator" id="stepIndicator">Giai đoạn 1 / 4</div>
+                        <h3 id="stepTitle">Dựng cờ, mở rộng địa bàn</h3>
+                        <p id="stepDesc">Mùa xuân 1771, nghĩa quân dựng cờ tại An Khê (Gia Lai). Đến năm 1774, làm chủ vùng đất từ Quảng Nam đến Bình Thuận.</p>
+                        <button id="nextStepBtn" class="action-btn">Tiếp tục diễn biến ➔</button>
+                    </div>
+                    
+                    <!-- Cột phải: Bản đồ -->
+                    <div class="map-wrapper">
+                        <div id="map"></div>
+                        <div class="map-legend">
+                            <div class="legend-item"><span class="dot start"></span> Khởi nghĩa</div>
+                            <div class="legend-item"><span class="dot battle"></span> Trận đánh</div>
+                            <div class="legend-item"><span class="dot capital"></span> Kinh đô</div>
+                            <div class="legend-item"><span class="line"></span> Hành quân</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 5: DIỄN BIẾN -->
+        <!-- SLIDE 5: KẾT QUẢ - Ý NGHĨA -->
         <section class="slide" id="slide-5">
-            <div class="slide-content">
-                <h2>3. Diễn biến – 4 giai đoạn</h2>
-                <div class="phases" id="phases"></div>
-            </div>
-        </section>
-
-        <!-- SLIDE 6: KẾT QUẢ - Ý NGHĨA -->
-        <section class="slide" id="slide-6">
-            <div class="slide-content">
+            <div class="slide-content morph-target">
                 <h2>4. Kết quả – Ý nghĩa</h2>
                 <div class="two-col">
                     <div class="col">
@@ -123,9 +123,9 @@
             </div>
         </section>
 
-        <!-- SLIDE 7: KẾT LUẬN -->
-        <section class="slide" id="slide-7">
-            <div class="slide-content conclusion">
+        <!-- SLIDE 6: KẾT LUẬN -->
+        <section class="slide" id="slide-6">
+            <div class="slide-content conclusion morph-target">
                 <h2>Kết luận</h2>
                 <p class="big-quote">"Phong trào Tây Sơn là một trong những phong trào nông dân vĩ đại nhất trong lịch sử dân tộc, đã hoàn thành sứ mệnh thống nhất đất nước và bảo vệ độc lập Tổ quốc."</p>
                 <p class="thanks">Cảm ơn thầy cô và các bạn đã lắng nghe!</p>
@@ -138,15 +138,26 @@
             <div class="dots" id="dots"></div>
             <button class="nav-btn" id="nextBtn">›</button>
         </div>
-        <div class="slide-counter" id="slideCounter">1 / 7</div>
+        <div class="slide-counter" id="slideCounter">1 / 6</div>
     </div>
 
-    <!-- Leaflet JS -->
+    <!-- MODAL THÔNG TIN NHÓM -->
+    <div class="modal-overlay" id="groupModal">
+        <div class="modal-content">
+            <h2>THÔNG TIN NHÓM 8</h2>
+            <ul class="member-list">
+                <li><strong>Thành viên 1 (Nhóm trưởng):</strong> Điều phối, kiểm chứng nội dung SGK, viết kết luận.</li>
+                <li><strong>Thành viên 2:</strong> Tóm tắt bối cảnh, tìm tư liệu hình ảnh.</li>
+                <li><strong>Thành viên 3:</strong> Xây dựng dòng thời gian, thiết kế slide timeline.</li>
+                <li><strong>Thành viên 4:</strong> Tóm tắt diễn biến, hỗ trợ xây dựng bản đồ số.</li>
+                <li><strong>Thành viên 5:</strong> Tóm tắt kết quả - ý nghĩa, thiết kế giao diện web.</li>
+            </ul>
+            <button class="close-btn" id="closeGroupBtn">Đóng</button>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- Leaflet Ant Path (Hiệu ứng mũi tên chuyển động) -->
     <script src="https://unpkg.com/leaflet-ant-path@1.3.0/dist/leaflet-ant-path.js"></script>
-    
-    <!-- Dữ liệu và Logic -->
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>

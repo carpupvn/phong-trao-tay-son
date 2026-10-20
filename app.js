@@ -1,5 +1,5 @@
 // ============================================
-// ĐIỀU HƯỚNG SLIDE
+// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG
 // ============================================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
@@ -11,15 +11,12 @@ let map = null;
 slides.forEach((_, i) => {
   const dot = document.createElement('button');
   dot.className = 'dot-btn' + (i === 0 ? ' active' : '');
-  dot.setAttribute('aria-label', `Slide ${i + 1}`);
   dot.addEventListener('click', () => goToSlide(i));
   dotsContainer.appendChild(dot);
 });
 
 function updateNav() {
-  document.querySelectorAll('.dot-btn').forEach((d, i) => {
-    d.classList.toggle('active', i === currentSlide);
-  });
+  document.querySelectorAll('.dot-btn').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
   slideCounter.textContent = `${currentSlide + 1} / ${slides.length}`;
   document.getElementById('prevBtn').disabled = currentSlide === 0;
   document.getElementById('nextBtn').disabled = currentSlide === slides.length - 1;
@@ -29,12 +26,18 @@ function goToSlide(n) {
   if (n < 0 || n >= slides.length) return;
   slides[currentSlide].classList.remove('active');
   currentSlide = n;
-  slides[currentSlide].classList.add('active');
+  
+  // Kích hoạt hiệu ứng morph (scale up)
+  setTimeout(() => {
+    slides[currentSlide].classList.add('active');
+  }, 50);
+  
   slides[currentSlide].scrollTop = 0;
   updateNav();
-  // Fix Leaflet bị co giãn khi slide ẩn/hiện
+  
+  // Bản đồ cần invalidateSize khi hiển thị lại
   if (currentSlide === 3 && map) {
-    setTimeout(() => map.invalidateSize(), 120);
+    setTimeout(() => map.invalidateSize(), 200);
   }
 }
 
@@ -42,11 +45,20 @@ document.getElementById('prevBtn').addEventListener('click', () => goToSlide(cur
 document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
 
 document.addEventListener('keydown', (e) => {
+  // Nếu đang mở modal thì không chuyển slide
+  if(document.getElementById('groupModal').classList.contains('active')) return;
+
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToSlide(currentSlide + 1); }
   if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
-  if (e.key === 'Home') goToSlide(0);
-  if (e.key === 'End') goToSlide(slides.length - 1);
 });
+
+// ============================================
+// XỬ LÝ MODAL THÔNG TIN NHÓM
+// ============================================
+const modal = document.getElementById('groupModal');
+document.getElementById('openGroupBtn').addEventListener('click', () => modal.classList.add('active'));
+document.getElementById('closeGroupBtn').addEventListener('click', () => modal.classList.remove('active'));
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 
 // ============================================
 // RENDER TIMELINE
@@ -54,78 +66,85 @@ document.addEventListener('keydown', (e) => {
 function renderTimeline() {
   const container = document.getElementById('timeline');
   container.innerHTML = DATA.events.map((ev, i) => `
-    <div class="tl-item" data-index="${i}">
+    <div class="tl-item">
       <div class="tl-year">${ev.year}</div>
-      <div class="tl-content">
-        <h3>${ev.title}</h3>
-        <p>${ev.desc}</p>
-      </div>
+      <div class="tl-content"><h3>${ev.title}</h3><p>${ev.desc}</p></div>
     </div>
   `).join('');
 }
 
 // ============================================
-// RENDER 4 GIAI ĐOẠN
+// LOGIC BẢN ĐỒ TƯƠNG TÁC TỪNG BƯỚC
 // ============================================
-function renderPhases() {
-  const container = document.getElementById('phases');
-  container.innerHTML = DATA.phases.map(p => `
-    <div class="phase-card">
-      <div class="phase-num">${p.num}</div>
-      <h3>${p.title}</h3>
-      <ul>${p.items.map(it => `<li>${it}</li>`).join('')}</ul>
-    </div>
-  `).join('');
-}
+let currentStep = 0;
+let mapLayers = []; // Lưu trữ marker/polyline hiện tại để xóa khi chuyển bước
 
-// ============================================
-// KHỞI TẠO BẢN ĐỒ LEAFLET
-// ============================================
 function initMap() {
-  map = L.map('map', { scrollWheelZoom: false }).setView([15.5, 107.5], 6);
-
-  // SỬ DỤNG ESRI DARK GRAY (Miễn phí, không cần API key, siêu ổn định)
-  // BẢN ĐỒ ĐỊA HÌNH
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+  map = L.map('map', { scrollWheelZoom: false, zoomControl: false }).setView([16, 106], 5);
+  
+  // Bản đồ nền sáng
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri',
     maxZoom: 16
   }).addTo(map);
+  
+  L.control.zoom({ position: 'topright' }).addTo(map);
 
-  // Icon tùy chỉnh theo loại địa điểm
+  // Nút chuyển bước
+  document.getElementById('nextStepBtn').addEventListener('click', () => {
+    if (currentStep < DATA.mapSteps.length - 1) {
+      currentStep++;
+      renderMapStep();
+    }
+  });
+
+  renderMapStep(); // Chạy bước 1
+}
+
+function renderMapStep() {
+  const stepData = DATA.mapSteps[currentStep];
+  
+  // 1. Cập nhật Text
+  document.getElementById('stepIndicator').textContent = `Giai đoạn ${currentStep + 1} / ${DATA.mapSteps.length}`;
+  document.getElementById('stepTitle').textContent = stepData.title;
+  document.getElementById('stepDesc').textContent = stepData.desc;
+  
+  const btn = document.getElementById('nextStepBtn');
+  if (currentStep === DATA.mapSteps.length - 1) {
+    btn.textContent = "Đã kết thúc diễn biến";
+    btn.disabled = true;
+  } else {
+    btn.textContent = "Tiếp tục diễn biến ➔";
+    btn.disabled = false;
+  }
+
+  // 2. Camera bay tới vị trí mới (FlyTo)
+  map.flyTo(stepData.center, stepData.zoom, { duration: 1.5 });
+
+  // 3. Xóa các layer cũ (marker, đường đi)
+  mapLayers.forEach(layer => map.removeLayer(layer));
+  mapLayers = [];
+
+  // 4. Thêm Marker mới
   const makeIcon = (type) => L.divIcon({
-    className: 'custom-marker ' + type,
-    html: '<div></div>',
-    iconSize: [20, 20],
-    iconAnchor: [10, 10]
+    className: 'custom-marker ' + type, html: '<div></div>', iconSize: [20, 20], iconAnchor: [10, 10]
   });
+  const icons = { start: makeIcon('start'), battle: makeIcon('battle'), capital: makeIcon('capital') };
 
-  const icons = {
-    start: makeIcon('start'),
-    battle: makeIcon('battle'),
-    capital: makeIcon('capital')
-  };
-
-  // Đánh số thứ tự cho marker
-  DATA.locations.forEach((loc, idx) => {
-    L.marker(loc.coords, { icon: icons[loc.type] })
+  stepData.markers.forEach(m => {
+    const marker = L.marker(m.coords, { icon: icons[m.type] })
       .addTo(map)
-      .bindPopup(`<b>${idx + 1}. ${loc.name}</b><br>${loc.desc}`);
+      .bindPopup(`<b>${m.name}</b>`);
+    mapLayers.push(marker);
   });
 
-  // VẼ ĐƯỜNG HÀNH QUÂN VỚI HIỆU ỨNG CHUYỂN ĐỘNG (leaflet-ant-path)
-  L.polyline.antPath(DATA.marchRoute, {
-    "color": "#c41e3a",       // Màu đỏ chủ đạo
-    "delay": 400,             // Tốc độ chuyển động của hiệu ứng
-    "dashArray": [10, 20],    // Tạo các nét đứt
-    "weight": 3.5,            // Độ dày của đường
-    "pulseColor": "#FFFFFF",  // Màu của điểm sáng chạy dọc đường
-    "paused": false,
-    "reverse": false
-  }).addTo(map);
-
-  // Căn bản đồ vừa tất cả các điểm
-  const bounds = L.latLngBounds(DATA.locations.map(l => l.coords));
-  map.fitBounds(bounds, { padding: [40, 40] });
+  // 5. Thêm đường hành quân (có hiệu ứng)
+  stepData.routes.forEach(routeCoords => {
+    const path = L.polyline.antPath(routeCoords, {
+      "color": "#c41e3a", "delay": 400, "dashArray": [10, 20], "weight": 3.5, "pulseColor": "#FFFFFF"
+    }).addTo(map);
+    mapLayers.push(path);
+  });
 }
 
 // ============================================
@@ -133,7 +152,6 @@ function initMap() {
 // ============================================
 window.addEventListener('load', () => {
   renderTimeline();
-  renderPhases();
   initMap();
   updateNav();
 });
