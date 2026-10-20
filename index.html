@@ -10,143 +10,144 @@
 <body>
     <div class="presentation" id="presentation">
 
-        <!-- SLIDE 1: TIÊU ĐỀ & THÔNG TIN NHÓM -->
-        <section class="slide active" id="slide-1">
-            <div class="title-slide">
-                <h1>PHONG TRÀO TÂY SƠN</h1>
-                <p class="subtitle">Cuộc khởi nghĩa nông dân vĩ đại thế kỷ XVIII</p>
-                <p class="source">Mục 3 – Bài 8 – SGK Lịch sử 11 (Kết nối tri thức)</p>
-                
-                <!-- HÌNH MINH HỌA SLIDE 1 -->
-                <div class="hero-image-container">
-                    <img src="img/slide1.jpg" alt="Tượng đài Quang Trung">
-                </div>
-
-                <button class="group-btn" id="openGroupBtn">NHÓM 8 - Bấm để xem chi tiết</button>
-                <p class="hint">Dùng phím ← → hoặc Space để chuyển slide</p>
-            </div>
-        </section>
-
-        <!-- SLIDE 2: BỐI CẢNH -->
-        <section class="slide" id="slide-2">
-            <div class="slide-content">
-                <h2>1. Bối cảnh lịch sử</h2>
-                <div class="two-col">
-                    <div class="col">
-                        <h3>Chính quyền chúa Nguyễn khủng hoảng</h3>
-                        <ul>
-                            <li>Chúa Nguyễn Phúc Thuần lên ngôi khi còn nhỏ</li>
-                            <li>Quyền thần Trương Phúc Loan lũng đoạn triều chính</li>
-                            <li>Quan lại ăn chơi, sa đọa</li>
-                        </ul>
-                        <h3>Đời sống nhân dân khốn khổ</h3>
-                        <ul>
-                            <li>Tô thuế, lao dịch nặng nề</li>
-                            <li>Nạn đói, thiên tai liên miên</li>
-                            <li>Nhiều khởi nghĩa nông dân nổ ra (Lý Văn Quang, Chàng Lía) đều bị dập tắt</li>
-                        </ul>
-                    </div>
-                    <div class="col highlight">
-                        <h3>Khởi nghĩa bùng nổ</h3>
-                        <p class="big">Mùa xuân 1771</p>
-                        <p>Ba anh em <strong>Nguyễn Nhạc, Nguyễn Huệ, Nguyễn Lữ</strong> dựng cờ khởi nghĩa tại <strong>Tây Sơn thượng đạo</strong> (An Khê, Gia Lai), chống lại chính quyền chúa Nguyễn.</p>
-                        
-                        <!-- HÌNH MINH HỌA SLIDE 2 -->
-                        <div class="inline-image">
-                            <img src="img/slide2.jpg" alt="Bối cảnh khởi nghĩa Tây Sơn">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SLIDE 3: DÒNG THỜI GIAN -->
-        <section class="slide" id="slide-3">
-            <div class="slide-content">
-                <h2>2. Dòng thời gian (1771 – 1789)</h2>
-                <div class="timeline" id="timeline"></div>
-            </div>
-        </section>
-
-        <!-- SLIDE 4: BẢN ĐỒ SỐ TƯƠNG TÁC TỪNG BƯỚC -->
-        <section class="slide" id="slide-4">
-            <div class="slide-content map-slide">
-                <h2>3. Diễn biến trên bản đồ số</h2>
-                
-                <div class="map-layout">
-                    <div class="map-info-panel">
-                        <div class="step-indicator" id="stepIndicator">Giai đoạn 1 / 4</div>
-                        <h3 id="stepTitle">Dựng cờ, mở rộng địa bàn</h3>
-                        <p id="stepDesc">Mùa xuân 1771, nghĩa quân dựng cờ tại An Khê (Gia Lai). Đến năm 1774, làm chủ vùng đất từ Quảng Nam đến Bình Thuận.</p>
-                        <button id="nextStepBtn" class="action-btn">Tiếp tục diễn biến ➔</button>
-                    </div>
+        <!-- BỌC TẤT CẢ SLIDE VÀO ĐÂY ĐỂ TẠO THÀNH DẢI BĂNG -->
+        <div class="slides-wrapper" id="slidesWrapper">
+            
+            <!-- SLIDE 1: TIÊU ĐỀ & THÔNG TIN NHÓM -->
+            <section class="slide" id="slide-1">
+                <div class="title-slide">
+                    <h1>PHONG TRÀO TÂY SƠN</h1>
+                    <p class="subtitle">Cuộc khởi nghĩa nông dân vĩ đại thế kỷ XVIII</p>
+                    <p class="source">Mục 3 – Bài 8 – SGK Lịch sử 11 (Kết nối tri thức)</p>
                     
-                    <div class="map-wrapper">
-                        <div id="map"></div>
-                        <div class="map-legend">
-                            <div class="legend-item"><span class="dot start"></span> Khởi nghĩa</div>
-                            <div class="legend-item"><span class="dot battle"></span> Trận đánh</div>
-                            <div class="legend-item"><span class="dot capital"></span> Kinh đô</div>
-                            <div class="legend-item"><span class="line"></span> Hành quân</div>
+                    <div class="hero-image-container">
+                        <img src="img/slide1.jpg" alt="Tượng đài Quang Trung">
+                    </div>
+
+                    <button class="group-btn" id="openGroupBtn">NHÓM 8 - Bấm để xem chi tiết</button>
+                    <p class="hint">Dùng phím ← → hoặc Space để chuyển slide</p>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: BỐI CẢNH -->
+            <section class="slide" id="slide-2">
+                <div class="slide-content">
+                    <h2>1. Bối cảnh lịch sử</h2>
+                    <div class="two-col">
+                        <div class="col">
+                            <h3>Sự khủng hoảng của các chính quyền phong kiến</h3>
+                            <ul>
+                                <li><strong>Đàng Ngoài:</strong> Chính quyền Lê - Trịnh khủng hoảng, quan lại tham nhũng, nông dân nổi dậy khắp nơi (tiêu biểu như Nguyễn Hữu Cầu, Hoàng Công Chất).</li>
+                                <li><strong>Đàng Trong:</strong> Chúa Nguyễn Phúc Thuần lên ngôi khi còn nhỏ, quyền thần Trương Phúc Loan lũng đoạn triều chính, quan lại ăn chơi sa đọa.</li>
+                            </ul>
+                            <h3>Đời sống nhân dân khốn khổ</h3>
+                            <ul>
+                                <li>Tô thuế, lao dịch nặng nề.</li>
+                                <li>Nạn đói, thiên tai liên miên.</li>
+                                <li>Mâu thuẫn xã hội gay gắt, các cuộc khởi nghĩa nông dân nổ ra nhưng đều bị dập tắt.</li>
+                            </ul>
+                        </div>
+                        <div class="col highlight">
+                            <h3>Khởi nghĩa Tây Sơn bùng nổ</h3>
+                            <p class="big">Mùa xuân 1771</p>
+                            <p>Ba anh em <strong>Nguyễn Nhạc, Nguyễn Huệ, Nguyễn Lữ</strong> dựng cờ khởi nghĩa tại <strong>Tây Sơn thượng đạo</strong> (An Khê, Gia Lai), nhắm vào chính quyền chúa Nguyễn đầu tiên.</p>
+                            
+                            <div class="inline-image">
+                                <img src="img/slide2.jpg" alt="Bối cảnh khởi nghĩa Tây Sơn">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SLIDE 5: KẾT QUẢ - Ý NGHĨA -->
-        <section class="slide" id="slide-5">
-            <div class="slide-content">
-                <h2>4. Kết quả – Ý nghĩa</h2>
-                <div class="two-col">
-                    <div class="col">
-                        <h3>Kết quả</h3>
-                        <ul>
-                            <li>Lật đổ các chính quyền phong kiến Nguyễn – Trịnh – Lê</li>
-                            <li>Xóa bỏ ranh giới chia cắt Đàng Trong – Đàng Ngoài</li>
-                            <li>Đặt nền tảng thống nhất quốc gia</li>
-                        </ul>
-                        <h3>Ý nghĩa lịch sử</h3>
-                        <ul>
-                            <li>Bảo vệ vững chắc độc lập dân tộc (chống Xiêm, Thanh)</li>
-                            <li>Khẳng định sức mạnh của khối đại đoàn kết toàn dân</li>
-                            <li>Để lại nhiều bài học lịch sử quý báu</li>
-                        </ul>
-                    </div>
-                    <!-- HÌNH MINH HỌA SLIDE 5 -->
-                    <div class="col image-col">
-                        <div class="framed-image">
-                            <img src="img/slide5.jpg" alt="Tranh Quang Trung đại phá quân Thanh">
-                            <p class="img-caption">Tranh dân gian: Quang Trung đại phá quân Thanh</p>
+            <!-- SLIDE 3: DÒNG THỜI GIAN -->
+            <section class="slide" id="slide-3">
+                <div class="slide-content">
+                    <h2>2. Dòng thời gian (1771 – 1789)</h2>
+                    <div class="timeline" id="timeline"></div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: BẢN ĐỒ SỐ TƯƠNG TÁC TỪNG BƯỚC -->
+            <section class="slide" id="slide-4">
+                <div class="slide-content map-slide">
+                    <h2>3. Diễn biến trên bản đồ số</h2>
+                    
+                    <div class="map-layout">
+                        <div class="map-info-panel">
+                            <div class="step-indicator" id="stepIndicator">Giai đoạn 1 / 4</div>
+                            <h3 id="stepTitle">Dựng cờ, mở rộng địa bàn</h3>
+                            <p id="stepDesc">Mùa xuân 1771, nghĩa quân dựng cờ tại An Khê (Gia Lai). Đến năm 1774, làm chủ vùng đất từ Quảng Nam đến Bình Thuận.</p>
+                            <button id="nextStepBtn" class="action-btn">Tiếp tục diễn biến ➔</button>
+                        </div>
+                        
+                        <div class="map-wrapper">
+                            <div id="map"></div>
+                            <div class="map-legend">
+                                <div class="legend-item"><span class="dot start"></span> Khởi nghĩa</div>
+                                <div class="legend-item"><span class="dot battle"></span> Trận đánh</div>
+                                <div class="legend-item"><span class="dot capital"></span> Kinh đô</div>
+                                <div class="legend-item"><span class="line"></span> Hành quân</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="before-after">
-                    <div class="ba-box before">
-                        <h4>Trước 1771</h4>
-                        <p>Đất nước chia cắt bởi sông Gianh (hơn 200 năm)</p>
+            </section>
+
+            <!-- SLIDE 5: KẾT QUẢ - Ý NGHĨA -->
+            <section class="slide" id="slide-5">
+                <div class="slide-content">
+                    <h2>4. Kết quả – Ý nghĩa</h2>
+                    <div class="two-col">
+                        <div class="col">
+                            <h3>Kết quả</h3>
+                            <ul>
+                                <li>Lật đổ các chính quyền phong kiến Nguyễn – Trịnh – Lê</li>
+                                <li>Xóa bỏ ranh giới chia cắt Đàng Trong – Đàng Ngoài</li>
+                                <li>Đặt nền tảng thống nhất quốc gia</li>
+                            </ul>
+                            <h3>Ý nghĩa lịch sử</h3>
+                            <ul>
+                                <li>Bảo vệ vững chắc độc lập dân tộc (chống Xiêm, Thanh)</li>
+                                <li>Khẳng định sức mạnh của khối đại đoàn kết toàn dân</li>
+                                <li>Để lại nhiều bài học lịch sử quý báu</li>
+                            </ul>
+                        </div>
+                        <div class="col image-col">
+                            <div class="framed-image">
+                                <img src="img/slide5.jpg" alt="Tranh Quang Trung đại phá quân Thanh">
+                                <p class="img-caption">Tranh dân gian: Quang Trung đại phá quân Thanh</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="arrow">→</div>
-                    <div class="ba-box after">
-                        <h4>Sau 1789</h4>
-                        <p>Đất nước thống nhất từ Bắc chí Nam</p>
+                    <div class="before-after">
+                        <div class="ba-box before">
+                            <h4>Trước 1771</h4>
+                            <p>Đất nước chia cắt bởi sông Gianh (hơn 200 năm)</p>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="ba-box after">
+                            <h4>Sau 1789</h4>
+                            <p>Đất nước thống nhất từ Bắc chí Nam</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SLIDE 6: KẾT LUẬN -->
-        <section class="slide" id="slide-6">
-            <div class="slide-content conclusion">
-                <h2>Kết luận</h2>
-                <div class="quote-box">
-                    <p class="big-quote">"Phong trào Tây Sơn là một trong những phong trào nông dân vĩ đại nhất trong lịch sử dân tộc, đã hoàn thành sứ mệnh thống nhất đất nước và bảo vệ vững chắc độc lập Tổ quốc."</p>
+            <!-- SLIDE 6: KẾT LUẬN -->
+            <section class="slide" id="slide-6">
+                <div class="slide-content conclusion">
+                    <h2>Kết luận</h2>
+                    <div class="quote-box">
+                        <p class="big-quote">"Phong trào Tây Sơn là một trong những phong trào nông dân vĩ đại nhất trong lịch sử dân tộc, đã hoàn thành sứ mệnh thống nhất đất nước và bảo vệ vững chắc độc lập Tổ quốc."</p>
+                    </div>
+                    <p class="thanks">Cảm ơn thầy cô và các bạn đã lắng nghe!</p>
                 </div>
-                <p class="thanks">Cảm ơn thầy cô và các bạn đã lắng nghe!</p>
-            </div>
-        </section>
+            </section>
 
-        <!-- ĐIỀU HƯỚNG -->
+        </div> <!-- KẾT THÚC DẢI BĂNG -->
+
+        <!-- ĐIỀU HƯỚNG (Nằm ngoài dải băng để không bị trượt theo) -->
         <div class="nav-controls">
             <button class="nav-btn" id="prevBtn">‹</button>
             <div class="dots" id="dots"></div>

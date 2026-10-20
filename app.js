@@ -1,16 +1,12 @@
 // ============================================
-// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG TRƯỢT SIÊU MƯỢT
+// ĐIỀU HƯỚNG DẢI BĂNG (CAROUSEL)
 // ============================================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
+const slidesWrapper = document.getElementById('slidesWrapper');
 const dotsContainer = document.getElementById('dots');
 const slideCounter = document.getElementById('slideCounter');
 let map = null;
-
-// Khởi tạo class ban đầu cho các slide
-slides.forEach((slide, i) => {
-  if (i !== 0) slide.classList.add('next-slide');
-});
 
 // Tạo dots
 slides.forEach((_, i) => {
@@ -30,41 +26,14 @@ function updateNav() {
 function goToSlide(n) {
   if (n < 0 || n >= slides.length || n === currentSlide) return;
   
-  const direction = n > currentSlide ? 1 : -1;
-  const prevSlide = slides[currentSlide];
-  const nextSlide = slides[n];
-
-  // 1. Tắt transition của tất cả slide để setup vị trí
-  slides.forEach(slide => {
-    slide.style.transition = 'none';
-    slide.classList.remove('active', 'prev-slide', 'next-slide');
-  });
-
-  // 2. Đặt vị trí xuất phát
-  if (direction === 1) { // Đi tiếp
-    prevSlide.classList.add('prev-slide');
-    nextSlide.classList.add('next-slide');
-  } else { // Đi lùi
-    prevSlide.classList.add('next-slide');
-    nextSlide.classList.add('prev-slide');
-  }
-
-  // 3. Ép trình duyệt tính toán lại layout (reflow)
-  void nextSlide.offsetWidth;
-
-  // 4. Bật lại transition
-  slides.forEach(slide => {
-    slide.style.transition = '';
-  });
-
-  // 5. Kích hoạt trượt
-  nextSlide.classList.remove('prev-slide', 'next-slide');
-  nextSlide.classList.add('active');
-
   currentSlide = n;
-  slides[currentSlide].scrollTop = 0;
+  
+  // Dịch chuyển cả dải băng sang trái (mỗi slide rộng 100vw)
+  slidesWrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
+  
   updateNav();
   
+  // Cập nhật lại bản đồ nếu đang ở Slide 4
   if (currentSlide === 3 && map) {
     setTimeout(() => map.invalidateSize(), 650); 
   }
@@ -74,7 +43,7 @@ document.getElementById('prevBtn').addEventListener('click', () => goToSlide(cur
 document.getElementById('nextBtn').addEventListener('click', () => goToSlide(currentSlide + 1));
 
 document.addEventListener('keydown', (e) => {
-  if(document.getElementById('groupModal').classList.contains('active') || document.getElementById('reportModal').classList.contains('active')) return;
+  if(document.getElementById('groupModal').classList.contains('active')) return;
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goToSlide(currentSlide + 1); }
   if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
 });
@@ -83,16 +52,24 @@ document.addEventListener('keydown', (e) => {
 // XỬ LÝ MODAL NHÓM
 // ============================================
 const groupModal = document.getElementById('groupModal');
+const openGroupBtn = document.getElementById('openGroupBtn');
+const closeGroupBtn = document.getElementById('closeGroupBtn');
 
-document.getElementById('openGroupBtn').addEventListener('click', () => groupModal.classList.add('active'));
-document.getElementById('closeGroupBtn').addEventListener('click', () => groupModal.classList.remove('active'));
-groupModal.addEventListener('click', (e) => { if (e.target === groupModal) groupModal.classList.remove('active'); });
+if (openGroupBtn && groupModal) {
+  openGroupBtn.addEventListener('click', () => groupModal.classList.add('active'));
+}
+if (closeGroupBtn && groupModal) {
+  closeGroupBtn.addEventListener('click', () => groupModal.classList.remove('active'));
+  groupModal.addEventListener('click', (e) => { if (e.target === groupModal) groupModal.classList.remove('active'); });
+}
 
 // ============================================
 // RENDER TIMELINE
 // ============================================
 function renderTimeline() {
   const container = document.getElementById('timeline');
+  if (!container) return;
+  
   container.innerHTML = DATA.events.map((ev, i) => `
     <div class="tl-item">
       <div class="tl-year">${ev.year}</div>
@@ -108,6 +85,9 @@ let currentStep = 0;
 let mapLayers = [];
 
 function initMap() {
+  const mapContainer = document.getElementById('map');
+  if (!mapContainer) return;
+
   map = L.map('map', { scrollWheelZoom: false, zoomControl: false }).setView([16, 106], 5);
   
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -117,17 +97,21 @@ function initMap() {
   
   L.control.zoom({ position: 'topright' }).addTo(map);
 
-  document.getElementById('nextStepBtn').addEventListener('click', () => {
-    if (currentStep < DATA.mapSteps.length - 1) {
-      currentStep++;
-      renderMapStep();
-    }
-  });
+  const nextStepBtn = document.getElementById('nextStepBtn');
+  if (nextStepBtn) {
+    nextStepBtn.addEventListener('click', () => {
+      if (currentStep < DATA.mapSteps.length - 1) {
+        currentStep++;
+        renderMapStep();
+      }
+    });
+  }
 
   renderMapStep();
 }
 
 function renderMapStep() {
+  if (!map) return;
   const stepData = DATA.mapSteps[currentStep];
   
   document.getElementById('stepIndicator').textContent = `Giai đoạn ${currentStep + 1} / ${DATA.mapSteps.length}`;
@@ -175,4 +159,5 @@ window.addEventListener('load', () => {
   renderTimeline();
   initMap();
   updateNav();
+  slidesWrapper.style.transform = 'translateX(0)';
 });

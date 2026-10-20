@@ -17,35 +17,35 @@ body {
   height: 100vh;
 }
 
-/* ===== HIỆU ỨNG TRƯỢT NGANG THUẦN TÚY ===== */
-.presentation { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+/* ===== HIỆU ỨNG DẢI BĂNG TRƯỢT NGANG ===== */
+.presentation { 
+  position: relative; 
+  width: 100vw; 
+  height: 100vh; 
+  overflow: hidden; 
+}
 
-.slide {
-  position: absolute; inset: 0;
-  padding: 40px 60px 80px;
-  display: flex; align-items: center; justify-content: center;
+/* Dải băng chứa tất cả các slide */
+.slides-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-  pointer-events: none;
-  transform: translateX(100%);
-  z-index: 1;
 }
 
-.slide.active {
-  transform: translateX(0);
-  pointer-events: auto;
-  z-index: 2;
+/* Từng slide chiếm trọn 1 màn hình */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  padding: 40px 60px 80px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  position: relative;
 }
 
-.slide.prev-slide {
-  transform: translateX(-100%);
-  z-index: 0;
-}
-
-.slide.next-slide {
-  transform: translateX(100%);
-  z-index: 0;
-}
-
+/* Nền mờ ảo nghệ thuật */
 .slide::before {
   content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(196, 30, 58, 0.05) 0%, transparent 60%);
@@ -100,7 +100,7 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 .col.highlight { background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(212, 175, 55, 0.08)); border: 1px solid var(--primary); padding: 25px; border-radius: 12px; }
 .col.highlight .big { font-size: 2rem; color: var(--gold); font-weight: bold; margin: 10px 0; }
 
-/* CSS HÌNH MINH HỌA SLIDE 2 & 5 */
+/* CSS HÌNH MINH HỌA */
 .inline-image { margin-top: 15px; border-radius: 8px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.5); }
 .inline-image img { width: 100%; height: 180px; object-fit: cover; display: block; }
 
@@ -180,7 +180,7 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 .big-quote { font-size: 1.4rem; font-style: italic; color: var(--gold); line-height: 1.8; margin: 0; }
 .thanks { font-size: 1.3rem; color: var(--primary); margin-top: 30px; letter-spacing: 2px; }
 
-/* ===== MODAL CHUNG ===== */
+/* ===== MODAL ===== */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.8);
   display: flex; align-items: center; justify-content: center;
@@ -196,7 +196,6 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 .modal-content h2 { border: none; padding: 0; color: var(--gold); text-align: center; margin-bottom: 20px; }
 .close-btn { display: block; width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; }
 
-/* ===== MODAL NHÓM 8 ===== */
 .member-list { list-style: none; margin-bottom: 25px; }
 .member-list li { padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); color: var(--text-muted); }
 .member-list li strong { color: var(--text); }
@@ -208,7 +207,7 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
   border: 1px solid var(--gold); padding: 8px 16px;
   border-radius: 20px; cursor: pointer; font-size: 0.9rem;
   z-index: 1000; transition: all 0.3s;
-  text-decoration: none; /* Bỏ gạch chân của thẻ a */
+  text-decoration: none;
   display: inline-block;
 }
 .report-btn:hover { background: var(--gold); color: var(--bg); }
