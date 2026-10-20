@@ -24,22 +24,28 @@ body {
   z-index: -1; pointer-events: none;
 }
 
-/* ===== HIỆU ỨNG MORPH CHUYỂN SLIDE ===== */
-.presentation { position: relative; width: 100vw; height: 100vh; }
+/* ===== HIỆU ỨNG TRƯỢT NGANG ===== */
+.presentation { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
 
 .slide {
   position: absolute; inset: 0;
   padding: 40px 60px 80px;
   opacity: 0; visibility: hidden;
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
-  transform: scale(0.95); 
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  transform: translateX(100%); /* Mặc định đẩy sang phải */
 }
 
 .slide.active { 
   opacity: 1; visibility: visible; 
-  transform: scale(1);
+  transform: translateX(0);
 }
+.slide.prev {
+  transform: translateX(-100%); /* Đẩy sang trái khi biến mất */
+  opacity: 0;
+  visibility: hidden;
+}
+
 .slide-content { width: 100%; max-width: 1300px; }
 
 h2 {
@@ -57,9 +63,8 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 .title-slide .subtitle { font-size: 1.4rem; color: var(--gold); margin-bottom: 10px; }
 .title-slide .source { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; }
 
-/* CSS CHO HÌNH MINH HỌA SLIDE 1 */
 .hero-image-container {
-  width: 300px; height: 180px; margin: 0 auto 20px auto;
+  width: 320px; height: 200px; margin: 0 auto 20px auto;
   border-radius: 10px; overflow: hidden;
   border: 3px solid var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
@@ -85,14 +90,14 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 
 /* CSS HÌNH MINH HỌA SLIDE 2 & 5 */
 .inline-image { margin-top: 15px; border-radius: 8px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.5); }
-.inline-image img { width: 100%; height: 150px; object-fit: cover; display: block; }
+.inline-image img { width: 100%; height: 180px; object-fit: cover; display: block; }
 
 .image-col { display: flex; flex-direction: column; justify-content: center; align-items: center; }
 .framed-image {
   background: #fff; padding: 10px 10px 20px 10px;
   border-radius: 5px; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
   transform: rotate(2deg); transition: transform 0.3s;
-  max-width: 320px;
+  max-width: 350px;
 }
 .framed-image:hover { transform: rotate(0deg) scale(1.05); }
 .framed-image img { width: 100%; height: auto; border-radius: 3px; display: block; }

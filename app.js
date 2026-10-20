@@ -1,5 +1,5 @@
 // ============================================
-// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG
+// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG TRƯỢT
 // ============================================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
@@ -24,12 +24,23 @@ function updateNav() {
 
 function goToSlide(n) {
   if (n < 0 || n >= slides.length) return;
-  slides[currentSlide].classList.remove('active');
-  currentSlide = n;
   
-  setTimeout(() => {
-    slides[currentSlide].classList.add('active');
-  }, 50);
+  // Slide cũ trượt sang trái
+  const prevSlide = slides[currentSlide];
+  prevSlide.classList.remove('active');
+  prevSlide.classList.add('prev');
+
+  currentSlide = n;
+  const nextSlide = slides[currentSlide];
+  
+  // Đảm bảo slide mới không bị kẹt ở trạng thái prev
+  nextSlide.classList.remove('prev');
+  
+  // Ép trình duyệt nhận diện lại trạng thái (để kích hoạt transition)
+  void nextSlide.offsetWidth;
+  
+  // Kích hoạt trượt vào
+  nextSlide.classList.add('active');
   
   slides[currentSlide].scrollTop = 0;
   updateNav();
@@ -86,7 +97,7 @@ function initMap() {
   
   // BẢN ĐỒ VỆ TINH (ESRI WORLD IMAGERY)
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    attribution: 'Tiles &copy; Esri',
     maxZoom: 18
   }).addTo(map);
   
