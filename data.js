@@ -10,19 +10,18 @@ const DATA = {
     { year: "1789", title: "Đại phá quân Thanh", desc: "Chiến thắng Ngọc Hồi – Đống Đa, đánh tan 29 vạn quân Thanh." }
   ],
 
-  // Dữ liệu Map chia theo 4 bước (Giai đoạn)
   mapSteps: [
     {
       title: "1. Dựng cờ, mở rộng địa bàn (1771-1774)",
       desc: "Mùa xuân 1771, khởi nghĩa nổ ra tại An Khê. Nghĩa quân nhanh chóng chiếm Quy Nhơn (1773) và làm chủ Nam Trung Bộ (1774).",
-      center: [13.5, 108.8], // Tọa độ tâm
+      center: [13.5, 108.8],
       zoom: 8,
       markers: [
         { coords: [13.95, 108.65], type: "start", name: "An Khê (Gia Lai)" },
         { coords: [13.78, 109.22], type: "capital", name: "Phủ Quy Nhơn" }
       ],
       routes: [
-        [ [13.95, 108.65], [13.78, 109.22] ] // Đường từ An Khê xuống Quy Nhơn
+        [ [13.95, 108.65], [13.78, 109.22] ]
       ]
     },
     {
@@ -37,7 +36,7 @@ const DATA = {
       ],
       routes: [
         [ [13.95, 108.65], [13.78, 109.22] ],
-        [ [13.78, 109.22], [10.35, 106.35] ] // Tiến vào Nam đánh Xiêm
+        [ [13.78, 109.22], [10.35, 106.35] ]
       ]
     },
     {
@@ -51,8 +50,8 @@ const DATA = {
         { coords: [21.03, 105.85], type: "capital", name: "Thăng Long" }
       ],
       routes: [
-        [ [10.35, 106.35], [13.78, 109.22] ], // Quay lại căn cứ
-        [ [13.78, 109.22], [16.47, 107.58], [21.03, 105.85] ] // Tiến ra Bắc
+        [ [10.35, 106.35], [13.78, 109.22] ],
+        [ [13.78, 109.22], [16.47, 107.58], [21.03, 105.85] ]
       ]
     },
     {
@@ -66,7 +65,7 @@ const DATA = {
         { coords: [20.95, 105.85], type: "battle", name: "Ngọc Hồi - Đống Đa" }
       ],
       routes: [
-        [ [16.47, 107.58], [20.95, 105.85] ] // Thần tốc ra Bắc
+        [ [16.47, 107.58], [20.95, 105.85] ]
       ]
     }
   ]
