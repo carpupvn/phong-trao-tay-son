@@ -84,10 +84,10 @@ function renderPhases() {
 function initMap() {
   map = L.map('map', { scrollWheelZoom: false }).setView([15.5, 107.5], 6);
 
-  // SỬ DỤNG OPENSTREETMAP (Miễn phí, không cần API Key)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors',
-    maxZoom: 19
+  // SỬ DỤNG ESRI DARK GRAY (Miễn phí, nền tối hợp với slide)
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom: 16
   }).addTo(map);
 
   // Icon tùy chỉnh theo loại địa điểm
