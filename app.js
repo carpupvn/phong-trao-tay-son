@@ -84,11 +84,11 @@ function renderPhases() {
 function initMap() {
   map = L.map('map', { scrollWheelZoom: false }).setView([15.5, 107.5], 6);
 
-  // SỬ DỤNG ESRI DARK GRAY (Miễn phí, nền tối hợp với slide)
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16,
-    referrerPolicy: 'origin'
+  // SỬ DỤNG CARTODB DARK MATTER (Bản đồ nền tối, ổn định, không cần API Key)
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
   }).addTo(map);
 
   // Icon tùy chỉnh theo loại địa điểm
