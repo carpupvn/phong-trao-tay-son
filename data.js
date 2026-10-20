@@ -1,6 +1,6 @@
 const DATA = {
   events: [
-    { year: "1771", title: "Khởi nghĩa bùng nổ", desc: "Mùa xuân 1771, ba anh em Nguyễn Nhạc, Nguyễn Huệ, Nguyễn Lữ dựng cờ khởi nghĩa tại Tây Sơn thượng đạo (An Khê, Gia Lai)." },
+    { year: "1771", title: "Khởi nghĩa bùng nổ", desc: "Năm 1771, ba anh em Nguyễn Nhạc, Nguyễn Huệ và Nguyễn Lữ dựng cờ khởi nghĩa tại Tây Sơn thượng đạo, thuộc khu vực An Khê ngày nay." },
     { year: "1773", title: "Chiếm phủ thành Quy Nhơn", desc: "Tháng 9/1773, nghĩa quân chiếm phủ thành Quy Nhơn, tạo bước ngoặt quan trọng." },
     { year: "1774", title: "Mở rộng địa bàn", desc: "Giữa năm 1774, nghĩa quân kiểm soát vùng đất từ Quảng Nam đến Bình Thuận." },
     { year: "1777", title: "Lật đổ chúa Nguyễn", desc: "Năm 1777, nghĩa quân lật đổ chính quyền chúa Nguyễn ở Đàng Trong." },
@@ -13,11 +13,11 @@ const DATA = {
   mapSteps: [
     {
       title: "1. Dựng cờ, mở rộng địa bàn (1771-1774)",
-      desc: "Mùa xuân 1771, khởi nghĩa nổ ra tại An Khê. Nghĩa quân nhanh chóng chiếm Quy Nhơn (1773) và làm chủ Nam Trung Bộ (1774).",
+      desc: "Năm 1771, khởi nghĩa nổ ra tại Tây Sơn thượng đạo. Nghĩa quân nhanh chóng chiếm Quy Nhơn (1773) và làm chủ Nam Trung Bộ (1774).",
       center: [13.5, 108.8],
       zoom: 8,
       markers: [
-        { coords: [13.95, 108.65], type: "start", name: "An Khê (Gia Lai)" },
+        { coords: [13.95, 108.65], type: "start", name: "Tây Sơn thượng đạo (An Khê)" },
         { coords: [13.78, 109.22], type: "capital", name: "Phủ Quy Nhơn" }
       ],
       routes: [
