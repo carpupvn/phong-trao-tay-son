@@ -87,7 +87,8 @@ function initMap() {
   // SỬ DỤNG ESRI DARK GRAY (Miễn phí, nền tối hợp với slide)
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
-    maxZoom: 16
+    maxZoom: 16,
+    referrerPolicy: 'origin'
   }).addTo(map);
 
   // Icon tùy chỉnh theo loại địa điểm
