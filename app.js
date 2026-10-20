@@ -85,7 +85,8 @@ function initMap() {
   map = L.map('map', { scrollWheelZoom: false }).setView([15.5, 107.5], 6);
 
   // SỬ DỤNG ESRI DARK GRAY (Miễn phí, không cần API key, siêu ổn định)
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+  // BẢN ĐỒ ĐỊA HÌNH
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri',
     maxZoom: 16
   }).addTo(map);
