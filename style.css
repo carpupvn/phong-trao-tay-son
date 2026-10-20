@@ -52,27 +52,51 @@ h2 {
 h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 
 /* ===== SLIDE TIÊU ĐỀ ===== */
-.title-slide { text-align: center; padding: 40px; }
-.title-slide h1 { font-size: 4rem; color: var(--primary); letter-spacing: 6px; margin-bottom: 20px; text-shadow: 0 0 30px rgba(196, 30, 58, 0.5); }
-.title-slide .subtitle { font-size: 1.4rem; color: var(--gold); margin-bottom: 20px; }
-.title-slide .source { font-size: 1rem; color: var(--text-muted); margin-bottom: 30px; }
+.title-slide { text-align: center; padding: 20px; }
+.title-slide h1 { font-size: 3.5rem; color: var(--primary); letter-spacing: 6px; margin-bottom: 15px; text-shadow: 0 0 30px rgba(196, 30, 58, 0.5); }
+.title-slide .subtitle { font-size: 1.4rem; color: var(--gold); margin-bottom: 10px; }
+.title-slide .source { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; }
+
+/* CSS CHO HÌNH MINH HỌA SLIDE 1 */
+.hero-image-container {
+  width: 300px; height: 180px; margin: 0 auto 20px auto;
+  border-radius: 10px; overflow: hidden;
+  border: 3px solid var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.hero-image-container img { width: 100%; height: 100%; object-fit: cover; }
 
 .group-btn {
   background: transparent; color: var(--gold);
-  border: 2px solid var(--gold); padding: 12px 25px;
+  border: 2px solid var(--gold); padding: 10px 25px;
   font-size: 1.1rem; font-weight: bold; border-radius: 30px;
-  cursor: pointer; transition: all 0.3s; margin-bottom: 30px;
+  cursor: pointer; transition: all 0.3s; margin-bottom: 20px;
+  display: inline-block;
 }
 .group-btn:hover { background: var(--gold); color: var(--bg); }
 .hint { color: var(--text-muted); font-style: italic; font-size: 0.9rem; }
 
 /* ===== HAI CỘT CƠ BẢN ===== */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
 .col ul { list-style: none; }
 .col ul li { padding: 8px 0 8px 25px; position: relative; line-height: 1.6; }
 .col ul li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); }
 .col.highlight { background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(212, 175, 55, 0.08)); border: 1px solid var(--primary); padding: 25px; border-radius: 12px; }
-.col.highlight .big { font-size: 2rem; color: var(--gold); font-weight: bold; margin: 15px 0; }
+.col.highlight .big { font-size: 2rem; color: var(--gold); font-weight: bold; margin: 10px 0; }
+
+/* CSS HÌNH MINH HỌA SLIDE 2 & 5 */
+.inline-image { margin-top: 15px; border-radius: 8px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.5); }
+.inline-image img { width: 100%; height: 150px; object-fit: cover; display: block; }
+
+.image-col { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.framed-image {
+  background: #fff; padding: 10px 10px 20px 10px;
+  border-radius: 5px; box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+  transform: rotate(2deg); transition: transform 0.3s;
+  max-width: 320px;
+}
+.framed-image:hover { transform: rotate(0deg) scale(1.05); }
+.framed-image img { width: 100%; height: auto; border-radius: 3px; display: block; }
+.img-caption { color: #333; text-align: center; font-size: 0.85rem; margin-top: 10px; font-style: italic; font-weight: bold; }
 
 /* ===== TIMELINE ===== */
 .timeline { max-height: 70vh; overflow-y: auto; padding: 10px 20px 10px 0; }
@@ -112,12 +136,12 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 @keyframes pulse { 0%, 100% { box-shadow: 0 0 5px rgba(231, 76, 60, 0.6); } 50% { box-shadow: 0 0 20px rgba(231, 76, 60, 1); } }
 
 /* ===== TRƯỚC - SAU ===== */
-.before-after { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px; }
-.ba-box { flex: 1; max-width: 380px; padding: 20px; border-radius: 10px; text-align: center; }
+.before-after { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 30px; }
+.ba-box { flex: 1; max-width: 380px; padding: 15px; border-radius: 10px; text-align: center; }
 .ba-box.before { background: rgba(100, 100, 100, 0.15); border: 1px solid #555; }
 .ba-box.after { background: rgba(46, 204, 113, 0.15); border: 1px solid #2ecc71; }
 .ba-box h4 { color: var(--gold); margin-bottom: 8px; font-size: 1.1rem; }
-.ba-box p { color: var(--text-muted); line-height: 1.5; }
+.ba-box p { color: var(--text-muted); line-height: 1.5; font-size: 0.95rem;}
 .arrow { font-size: 2.5rem; color: var(--primary); font-weight: bold; }
 
 /* ===== KẾT LUẬN & SỬA LỖI VỆT ĐỎ ===== */
@@ -131,10 +155,7 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
   max-width: 900px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
-.big-quote {
-  font-size: 1.4rem; font-style: italic; color: var(--gold);
-  line-height: 1.8; border: none; padding: 0; margin: 0;
-}
+.big-quote { font-size: 1.4rem; font-style: italic; color: var(--gold); line-height: 1.8; border: none; padding: 0; margin: 0; }
 .thanks { font-size: 1.3rem; color: var(--primary); margin-top: 30px; letter-spacing: 2px; }
 
 /* ===== MODAL CHUNG ===== */
@@ -194,4 +215,6 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
   .map-layout { grid-template-columns: 1fr; }
   .map-info-panel { height: auto; }
   .map-wrapper { height: 50vh; }
+  .two-col { grid-template-columns: 1fr; }
+  .framed-image { max-width: 100%; margin-top: 20px; }
 }
