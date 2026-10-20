@@ -42,15 +42,14 @@ const DATA = {
     {
       title: "3. Tiến ra Bắc, diệt Trịnh (1786-1788)",
       desc: "Nguyễn Huệ tiến quân ra Bắc, hạ thành Phú Xuân và giải phóng Thăng Long, lật đổ chúa Trịnh.",
-      center: [18.5, 106.5],
-      zoom: 5,
+      center: [17.5, 106.5],
+      zoom: 6,
       markers: [
-        { coords: [13.78, 109.22], type: "capital", name: "Quy Nhơn" },
-        { coords: [16.47, 107.58], type: "capital", name: "Phú Xuân (Huế)" },
+        { coords: [13.78, 109.22], type: "start", name: "Quy Nhơn (Căn cứ)" },
+        { coords: [16.47, 107.58], type: "battle", name: "Phú Xuân (Huế)" },
         { coords: [21.03, 105.85], type: "capital", name: "Thăng Long" }
       ],
       routes: [
-        [ [10.35, 106.35], [13.78, 109.22] ],
         [ [13.78, 109.22], [16.47, 107.58], [21.03, 105.85] ]
       ]
     },
