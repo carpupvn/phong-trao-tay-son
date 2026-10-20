@@ -1,0 +1,320 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0f0f15;
+  --bg-2: #1a1a24;
+  --primary: #c41e3a;
+  --gold: #d4af37;
+  --text: #f0f0f0;
+  --text-muted: #a8a8b8;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+}
+
+.presentation { position: relative; width: 100vw; height: 100vh; }
+
+.slide {
+  position: absolute; inset: 0;
+  padding: 50px 80px 90px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+  display: flex; align-items: center; justify-content: center;
+  overflow-y: auto;
+}
+
+.slide.active { opacity: 1; visibility: visible; }
+.slide-content { width: 100%; max-width: 1250px; }
+
+h2 {
+  font-size: 2.2rem; color: var(--gold);
+  margin-bottom: 25px;
+  border-left: 5px solid var(--primary);
+  padding-left: 15px;
+}
+
+h3 {
+  font-size: 1.2rem; color: var(--primary);
+  margin: 15px 0 10px;
+}
+
+/* ===== SLIDE TIÊU ĐỀ ===== */
+.title-slide { text-align: center; padding: 40px; }
+
+.title-slide h1 {
+  font-size: 4rem; color: var(--primary);
+  letter-spacing: 6px; margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(196, 30, 58, 0.5);
+}
+
+.title-slide .subtitle {
+  font-size: 1.4rem; color: var(--gold); margin-bottom: 20px;
+}
+
+.title-slide .source {
+  font-size: 1rem; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.group-info {
+  margin: 30px auto; padding: 20px;
+  background: rgba(196, 30, 58, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px; max-width: 500px;
+  line-height: 2; color: var(--text);
+}
+
+.hint {
+  margin-top: 30px; color: var(--text-muted);
+  font-style: italic; font-size: 0.9rem;
+}
+
+/* ===== HAI CỘT ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+.col ul { list-style: none; }
+
+.col ul li {
+  padding: 8px 0 8px 25px; position: relative; line-height: 1.6;
+}
+
+.col ul li::before {
+  content: '▸'; position: absolute; left: 0; color: var(--gold);
+}
+
+.col.highlight {
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.15), rgba(212, 175, 55, 0.08));
+  border: 1px solid var(--primary);
+  padding: 25px; border-radius: 12px;
+}
+
+.col.highlight .big {
+  font-size: 2rem; color: var(--gold);
+  font-weight: bold; margin: 15px 0;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  max-height: 68vh; overflow-y: auto;
+  padding: 10px 20px 10px 0;
+}
+
+.tl-item {
+  display: flex; gap: 25px;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.tl-item:hover { background: rgba(196, 30, 58, 0.1); }
+
+.tl-year {
+  flex-shrink: 0; min-width: 130px;
+  font-size: 1.2rem; font-weight: bold;
+  color: var(--gold); padding-top: 3px;
+  white-space: nowrap;
+}
+
+.tl-content h3 {
+  margin: 0 0 4px; color: var(--primary); font-size: 1.05rem;
+}
+
+.tl-content p { color: var(--text-muted); line-height: 1.5; font-size: 0.92rem; }
+
+/* ===== BẢN ĐỒ ===== */
+.map-slide { height: 100%; }
+
+.map-wrapper {
+  position: relative; height: 68vh;
+  border-radius: 12px; overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+#map { width: 100%; height: 100%; background: #222; }
+
+.map-legend {
+  position: absolute; bottom: 15px; left: 15px;
+  background: rgba(15, 15, 21, 0.92);
+  padding: 12px 16px; border-radius: 8px;
+  border: 1px solid var(--gold);
+  z-index: 1000; font-size: 0.85rem;
+}
+
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 3px 0; color: var(--text);
+}
+
+.dot {
+  display: inline-block; width: 14px; height: 14px;
+  border-radius: 50%; border: 2px solid white;
+}
+
+.dot.start { background: #2ecc71; }
+.dot.battle { background: #e74c3c; }
+.dot.capital { background: #f39c12; }
+
+.line {
+  display: inline-block; width: 24px; height: 0;
+  border-top: 3px dashed var(--primary);
+}
+
+/* Marker tùy chỉnh */
+.custom-marker { background: none !important; border: none !important; }
+.custom-marker div {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+.custom-marker.start div { background: #2ecc71; }
+.custom-marker.battle div { background: #e74c3c; animation: pulse 1.5s infinite; }
+.custom-marker.capital div { background: #f39c12; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(231, 76, 60, 0.6); }
+  50% { box-shadow: 0 0 20px rgba(231, 76, 60, 1); }
+}
+
+/* ===== 4 GIAI ĐOẠN ===== */
+.phases {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+}
+
+.phase-card {
+  background: var(--bg-2); border-radius: 12px;
+  padding: 25px 22px 20px;
+  border-left: 4px solid var(--primary);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.phase-card:hover { transform: translateY(-3px); }
+
+.phase-num {
+  position: absolute; top: -15px; left: 20px;
+  width: 38px; height: 38px;
+  background: var(--primary); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 1.1rem; color: white;
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.6);
+}
+
+.phase-card h3 {
+  margin-top: 18px; color: var(--gold); font-size: 1.05rem; line-height: 1.3;
+}
+
+.phase-card ul { list-style: none; margin-top: 10px; }
+
+.phase-card ul li {
+  padding: 5px 0 5px 20px; position: relative;
+  font-size: 0.9rem; line-height: 1.5; color: var(--text-muted);
+}
+
+.phase-card ul li::before {
+  content: '•'; position: absolute; left: 5px;
+  color: var(--gold); font-weight: bold;
+}
+
+/* ===== TRƯỚC - SAU ===== */
+.before-after {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-top: 30px;
+}
+
+.ba-box {
+  flex: 1; max-width: 380px;
+  padding: 20px; border-radius: 10px; text-align: center;
+}
+
+.ba-box.before {
+  background: rgba(100, 100, 100, 0.15);
+  border: 1px solid #555;
+}
+
+.ba-box.after {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid #2ecc71;
+}
+
+.ba-box h4 { color: var(--gold); margin-bottom: 8px; font-size: 1.1rem; }
+.ba-box p { color: var(--text-muted); line-height: 1.5; }
+
+.arrow { font-size: 2.5rem; color: var(--primary); font-weight: bold; }
+
+/* ===== KẾT LUẬN ===== */
+.conclusion { text-align: center; }
+
+.big-quote {
+  font-size: 1.35rem; font-style: italic; color: var(--gold);
+  max-width: 850px; margin: 30px auto;
+  line-height: 1.7; padding: 30px;
+  border-top: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.thanks {
+  font-size: 1.3rem; color: var(--primary);
+  margin-top: 30px; letter-spacing: 2px;
+}
+
+/* ===== ĐIỀU HƯỚNG ===== */
+.nav-controls {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 15px; z-index: 1000;
+}
+
+.nav-btn {
+  width: 45px; height: 45px; border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: rgba(15, 15, 21, 0.85);
+  color: var(--gold); font-size: 1.5rem;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: bold;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: var(--primary); color: white; border-color: var(--primary);
+}
+
+.nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.dots { display: flex; gap: 8px; }
+
+.dot-btn {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: none; background: rgba(212, 175, 55, 0.3);
+  cursor: pointer; transition: all 0.2s; padding: 0;
+}
+
+.dot-btn.active { background: var(--gold); transform: scale(1.4); }
+
+.slide-counter {
+  position: fixed; bottom: 28px; right: 30px;
+  color: var(--gold); font-size: 0.9rem; z-index: 1000;
+  background: rgba(15, 15, 21, 0.85);
+  padding: 4px 12px; border-radius: 15px;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .slide { padding: 40px 25px 80px; }
+  .two-col, .phases { grid-template-columns: 1fr; gap: 15px; }
+  .title-slide h1 { font-size: 2.3rem; letter-spacing: 3px; }
+  h2 { font-size: 1.5rem; }
+  .tl-year { min-width: 80px; font-size: 0.95rem; }
+  .map-wrapper { height: 60vh; }
+  .before-after { flex-direction: column; }
+  .arrow { transform: rotate(90deg); }
+}

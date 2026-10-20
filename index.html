@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phong trào Tây Sơn – Lịch sử 11</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="presentation" id="presentation">
+
+        <!-- SLIDE 1: TIÊU ĐỀ -->
+        <section class="slide active" id="slide-1">
+            <div class="title-slide">
+                <h1>PHONG TRÀO TÂY SƠN</h1>
+                <p class="subtitle">Cuộc khởi nghĩa nông dân vĩ đại thế kỷ XVIII</p>
+                <p class="source">Mục 3 – Bài 8 – SGK Lịch sử 11 (Kết nối tri thức)</p>
+                <div class="group-info">
+                    <p><strong>Nhóm:</strong> ...................</p>
+                    <p><strong>Thành viên:</strong> ...................</p>
+                </div>
+                <p class="hint">Dùng phím ← → hoặc Space để chuyển slide</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: BỐI CẢNH -->
+        <section class="slide" id="slide-2">
+            <div class="slide-content">
+                <h2>1. Bối cảnh lịch sử</h2>
+                <div class="two-col">
+                    <div class="col">
+                        <h3>Chính quyền chúa Nguyễn khủng hoảng</h3>
+                        <ul>
+                            <li>Chúa Nguyễn Phúc Thuần lên ngôi khi còn nhỏ</li>
+                            <li>Quyền thần Trương Phúc Loan lũng đoạn triều chính</li>
+                            <li>Quan lại ăn chơi, sa đọa</li>
+                        </ul>
+                        <h3>Đời sống nhân dân khốn khổ</h3>
+                        <ul>
+                            <li>Tô thuế, lao dịch nặng nề</li>
+                            <li>Nạn đói, thiên tai liên miên</li>
+                            <li>Nhiều khởi nghĩa nông dân nổ ra (Lý Văn Quang, Chàng Lía) đều bị dập tắt</li>
+                        </ul>
+                    </div>
+                    <div class="col highlight">
+                        <h3>Khởi nghĩa bùng nổ</h3>
+                        <p class="big">Mùa xuân 1771</p>
+                        <p>Ba anh em <strong>Nguyễn Nhạc, Nguyễn Huệ, Nguyễn Lữ</strong> dựng cờ khởi nghĩa tại <strong>Tây Sơn thượng đạo</strong> (An Khê, Gia Lai), chống lại chính quyền chúa Nguyễn.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: DÒNG THỜI GIAN -->
+        <section class="slide" id="slide-3">
+            <div class="slide-content">
+                <h2>2. Dòng thời gian (1771 – 1789)</h2>
+                <div class="timeline" id="timeline"></div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: BẢN ĐỒ SỐ -->
+        <section class="slide" id="slide-4">
+            <div class="slide-content map-slide">
+                <h2>3. Bản đồ số – Diễn biến chính</h2>
+                <div class="map-wrapper">
+                    <div id="map"></div>
+                    <div class="map-legend">
+                        <div class="legend-item"><span class="dot start"></span> Khởi nghĩa bùng nổ</div>
+                        <div class="legend-item"><span class="dot battle"></span> Trận đánh lớn</div>
+                        <div class="legend-item"><span class="dot capital"></span> Kinh đô / thành trì</div>
+                        <div class="legend-item"><span class="line"></span> Đường hành quân (chuyển động)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: DIỄN BIẾN -->
+        <section class="slide" id="slide-5">
+            <div class="slide-content">
+                <h2>3. Diễn biến – 4 giai đoạn</h2>
+                <div class="phases" id="phases"></div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: KẾT QUẢ - Ý NGHĨA -->
+        <section class="slide" id="slide-6">
+            <div class="slide-content">
+                <h2>4. Kết quả – Ý nghĩa</h2>
+                <div class="two-col">
+                    <div class="col">
+                        <h3>Kết quả</h3>
+                        <ul>
+                            <li>Lật đổ các chính quyền phong kiến Nguyễn – Trịnh – Lê</li>
+                            <li>Xóa bỏ ranh giới chia cắt Đàng Trong – Đàng Ngoài</li>
+                            <li>Đặt nền tảng thống nhất quốc gia</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Ý nghĩa lịch sử</h3>
+                        <ul>
+                            <li>Bảo vệ vững chắc độc lập dân tộc (chống Xiêm, Thanh)</li>
+                            <li>Từ khởi nghĩa địa phương phát triển thành phong trào dân tộc rộng lớn</li>
+                            <li>Khẳng định sức mạnh của nhân dân</li>
+                            <li>Để lại nhiều bài học lịch sử quý báu</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="before-after">
+                    <div class="ba-box before">
+                        <h4>Trước 1771</h4>
+                        <p>Đất nước chia cắt bởi sông Gianh (hơn 200 năm)</p>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="ba-box after">
+                        <h4>Sau 1789</h4>
+                        <p>Đất nước thống nhất từ Bắc chí Nam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: KẾT LUẬN -->
+        <section class="slide" id="slide-7">
+            <div class="slide-content conclusion">
+                <h2>Kết luận</h2>
+                <p class="big-quote">"Phong trào Tây Sơn là một trong những phong trào nông dân vĩ đại nhất trong lịch sử dân tộc, đã hoàn thành sứ mệnh thống nhất đất nước và bảo vệ độc lập Tổ quốc."</p>
+                <p class="thanks">Cảm ơn thầy cô và các bạn đã lắng nghe!</p>
+            </div>
+        </section>
+
+        <!-- ĐIỀU HƯỚNG -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn">‹</button>
+            <div class="dots" id="dots"></div>
+            <button class="nav-btn" id="nextBtn">›</button>
+        </div>
+        <div class="slide-counter" id="slideCounter">1 / 7</div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet Ant Path (Hiệu ứng mũi tên chuyển động) -->
+    <script src="https://unpkg.com/leaflet-ant-path@1.3.0/dist/leaflet-ant-path.js"></script>
+    
+    <!-- Dữ liệu và Logic -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
