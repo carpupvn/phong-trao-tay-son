@@ -1,11 +1,16 @@
 // ============================================
-// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG TRƯỢT
+// ĐIỀU HƯỚNG SLIDE & HIỆU ỨNG TRƯỢT SIÊU MƯỢT
 // ============================================
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.getElementById('dots');
 const slideCounter = document.getElementById('slideCounter');
 let map = null;
+
+// Khởi tạo class ban đầu cho các slide
+slides.forEach((slide, i) => {
+  if (i !== 0) slide.classList.add('next-slide');
+});
 
 // Tạo dots
 slides.forEach((_, i) => {
@@ -25,27 +30,35 @@ function updateNav() {
 function goToSlide(n) {
   if (n < 0 || n >= slides.length || n === currentSlide) return;
   
-  const direction = n > currentSlide ? 1 : -1; // 1 là tiến, -1 là lùi
+  const direction = n > currentSlide ? 1 : -1;
   const prevSlide = slides[currentSlide];
   const nextSlide = slides[n];
 
-  // Xóa các class cũ
-  prevSlide.classList.remove('active', 'slide-in-left', 'slide-in-right');
-  nextSlide.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+  // 1. Tắt transition của tất cả slide để setup vị trí
+  slides.forEach(slide => {
+    slide.style.transition = 'none';
+    slide.classList.remove('active', 'prev-slide', 'next-slide');
+  });
 
-  // Thiết lập hiệu ứng trượt đi cho slide cũ
-  if (direction === 1) prevSlide.classList.add('slide-out-left');
-  else prevSlide.classList.add('slide-out-right');
+  // 2. Đặt vị trí xuất phát
+  if (direction === 1) { // Đi tiếp
+    prevSlide.classList.add('prev-slide');
+    nextSlide.classList.add('next-slide');
+  } else { // Đi lùi
+    prevSlide.classList.add('next-slide');
+    nextSlide.classList.add('prev-slide');
+  }
 
-  // Thiết lập vị trí xuất phát cho slide mới
-  if (direction === 1) nextSlide.classList.add('slide-in-right');
-  else nextSlide.classList.add('slide-in-left');
-
-  // Ép trình duyệt nhận diện vị trí mới
+  // 3. Ép trình duyệt tính toán lại layout (reflow)
   void nextSlide.offsetWidth;
 
-  // Kích hoạt trượt vào
-  nextSlide.classList.remove('slide-in-right', 'slide-in-left');
+  // 4. Bật lại transition
+  slides.forEach(slide => {
+    slide.style.transition = '';
+  });
+
+  // 5. Kích hoạt trượt
+  nextSlide.classList.remove('prev-slide', 'next-slide');
   nextSlide.classList.add('active');
 
   currentSlide = n;
@@ -53,7 +66,7 @@ function goToSlide(n) {
   updateNav();
   
   if (currentSlide === 3 && map) {
-    setTimeout(() => map.invalidateSize(), 300);
+    setTimeout(() => map.invalidateSize(), 650); 
   }
 }
 
@@ -102,7 +115,6 @@ let mapLayers = [];
 function initMap() {
   map = L.map('map', { scrollWheelZoom: false, zoomControl: false }).setView([16, 106], 5);
   
-  // BẢN ĐỒ VỆ TINH (ESRI WORLD IMAGERY)
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
     attribution: 'Tiles &copy; Esri',
     maxZoom: 18
