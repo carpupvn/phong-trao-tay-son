@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo dự án: Phong trào Tây Sơn</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f15;
+            color: #f0f0f0;
+            line-height: 1.6;
+            padding: 40px 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #1a1a24;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        h1, h2, h3 { color: #d4af37; }
+        h1 { text-align: center; border-bottom: 2px solid #c41e3a; padding-bottom: 15px; }
+        p, li { color: #a8a8b8; }
+        strong { color: #f0f0f0; }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .back-btn:hover { background-color: #d4af37; color: #0f0f15; }
+        .section { margin-bottom: 30px; }
+        .code-block {
+            background-color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #2ecc71;
+            border-left: 4px solid #c41e3a;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Quay lại bài thuyết trình</a>
+        <h1>BÁO CÁO DỰ ÁN THUYẾT TRÌNH TƯƠNG TÁC</h1>
+        
+        <div class="section">
+            <h2>I. Thông tin chung</h2>
+            <ul>
+                <li><strong>Chủ đề:</strong> Phong trào Tây Sơn (Mục 3 – Bài 8 – SGK Lịch sử 11 - Kết nối tri thức).</li>
+                <li><strong>Mục tiêu:</strong> Tạo ra một sản phẩm thuyết trình trực quan, tương tác bằng công nghệ web (HTML/CSS/JS), vượt xa các slide PowerPoint truyền thống. Tích hợp bản đồ vệ tinh số để tái hiện sinh động các bước di chuyển của quân Tây Sơn.</li>
+                <li><strong>Thành viên thực hiện:</strong> Nguyễn Ngọc Phước (Nhóm trưởng), Hoàng Minh, Trần Anh Minh, Nguyễn Công Trí, Hoàng Minh Hùng, Nguyễn Hoàng Gia Bảo.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>II. Ứng dụng Trí tuệ nhân tạo (AI) trong dự án</h2>
+            <p>Dự án đã tận dụng tối đa sức mạnh của AI để đóng vai trò như một "Lập trình viên" và "Biên tập viên" hỗ trợ nhóm.</p>
+            
+            <h3>1. Các công cụ AI đã sử dụng:</h3>
+            <ul>
+                <li><strong>ChatGPT (GPT-4):</strong> Viết mã nguồn HTML/CSS/JS, xử lý logic bản đồ, gỡ lỗi (debug) và cấu trúc lại văn bản lịch sử sao cho ngắn gọn, dễ hiểu.</li>
+                <li><strong>Gemini:</strong> Hỗ trợ tra cứu chéo các mốc thời gian lịch sử để đảm bảo độ chính xác tuyệt đối so với SGK.</li>
+            </ul>
+
+            <h3>2. Các Prompt (Câu lệnh) tiêu biểu đã sử dụng:</h3>
+            <div class="code-block">"Hãy viết cho tôi một đoạn code HTML/CSS tạo giao diện slide trình chiếu màu tối, chủ đạo là đỏ và vàng, có hiệu ứng trượt ngang mượt mà không dùng opacity."</div>
+            <div class="code-block">"Sử dụng thư viện Leaflet.js để tạo một bản đồ vệ tinh. Viết hàm JS để khi bấm nút, bản đồ sẽ tự động bay (flyTo) đến một tọa độ, vẽ một đường nối các điểm di chuyển có hiệu ứng mũi tên chạy (ant-path)."</div>
+            <div class="code-block">"Tôi có đoạn văn bản về trận Rạch Gầm - Xoài Mút. Hãy tóm tắt lại thành 3-4 câu, nhấn mạnh vào chiến thuật nghi binh và kết quả đánh tan 5 vạn quân Xiêm."</div>
+            <div class="code-block">"Làm sao để nhúng một file báo cáo Word (.docx) lên web HTML để người dùng có thể xem trực tiếp thay vì tải về? Gợi ý cho tôi cách chuyển nội dung đó sang một trang HTML tĩnh."</div>
+        </div>
+
+        <div class="section">
+            <h2>III. Phân công nhiệm vụ chi tiết</h2>
+            <ul>
+                <li><strong>Nguyễn Ngọc Phước (Nhóm trưởng):</strong> Điều phối chung. Trực tiếp sử dụng AI để sinh mã nguồn giao diện (HTML/CSS/JS), viết logic tương tác bản đồ. Chịu trách nhiệm deploy web lên Cloudflare Pages. Thuyết trình phần Mở đầu & Kết luận.</li>
+                <li><strong>Hoàng Minh:</strong> Nghiên cứu, tóm tắt nội dung Bối cảnh lịch sử (Đàng Trong - Đàng Ngoài). Tìm kiếm và xử lý hình ảnh tư liệu lịch sử. Thuyết trình phần Bối cảnh.</li>
+                <li><strong>Trần Anh Minh:</strong> Nghiên cứu nội dung Dòng thời gian. Nhập liệu (data entry) 8 mốc sự kiện vào file cấu trúc JSON. Kiểm thử giao diện hiển thị dòng thời gian. Thuyết trình phần Dòng thời gian.</li>
+                <li><strong>Nguyễn Công Trí:</strong> Nghiên cứu sâu nội dung Diễn biến. Viết kịch bản lời thoại cho phần tương tác bản đồ. Trực tiếp điều khiển và thuyết trình 2 giai đoạn đầu trên bản đồ số.</li>
+                <li><strong>Hoàng Minh Hùng:</strong> Nghiên cứu nội dung Kết quả. Đảm nhận vai trò QA/QC (kiểm thử giao diện, rà soát lỗi chính tả, kiểm tra các nút bấm hoạt động trơn tru). Thuyết trình phần Kết quả và điều khiển 2 giai đoạn sau của bản đồ.</li>
+                <li><strong>Nguyễn Hoàng Gia Bảo:</strong> Nghiên cứu nội dung Ý nghĩa lịch sử. Chịu trách nhiệm tổng hợp và soạn thảo văn bản báo cáo này. Thuyết trình phần Ý nghĩa.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
