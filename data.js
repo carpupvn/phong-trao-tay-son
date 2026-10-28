@@ -1,3 +1,15 @@
+const DATA = {
+  events: [
+    { year: "1771", title: "Khởi nghĩa bùng nổ", desc: "Năm 1771, ba anh em Nguyễn Nhạc, Nguyễn Huệ và Nguyễn Lữ dựng cờ khởi nghĩa tại Tây Sơn thượng đạo, thuộc khu vực An Khê ngày nay." },
+    { year: "1773", title: "Chiếm phủ thành Quy Nhơn", desc: "Tháng 9/1773, nghĩa quân chiếm phủ thành Quy Nhơn, tạo bước ngoặt quan trọng." },
+    { year: "1774", title: "Mở rộng địa bàn", desc: "Giữa năm 1774, nghĩa quân kiểm soát vùng đất từ Quảng Nam đến Bình Thuận." },
+    { year: "1777", title: "Lật đổ chúa Nguyễn", desc: "Năm 1777, nghĩa quân lật đổ chính quyền chúa Nguyễn ở Đàng Trong." },
+    { year: "1778", title: "Nguyễn Nhạc lên ngôi", desc: "Năm 1778, Nguyễn Nhạc lên ngôi hoàng đế, đóng đô tại thành Đồ Bàn." },
+    { year: "1785", title: "Chiến thắng Rạch Gầm – Xoài Mút", desc: "Tháng 1/1785, Nguyễn Huệ đánh tan 5 vạn quân Xiêm." },
+    { year: "1786–1788", title: "Tiến ra Bắc, diệt Trịnh", desc: "Lật đổ chúa Trịnh, chính quyền Lê sụp đổ hoàn toàn." },
+    { year: "1789", title: "Đại phá quân Thanh", desc: "Chiến thắng Ngọc Hồi – Đống Đa, đánh tan 29 vạn quân Thanh." }
+  ],
+
   mapSteps: [
     {
       title: "1. Dựng cờ, mở rộng địa bàn (1771-1774)",
@@ -46,3 +58,4 @@
       routes: [ [ [16.47, 107.58], [20.95, 105.85] ] ]
     }
   ]
+};
