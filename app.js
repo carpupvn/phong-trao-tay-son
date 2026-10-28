@@ -97,15 +97,19 @@ function initMap() {
   
   L.control.zoom({ position: 'topright' }).addTo(map);
 
-  const nextStepBtn = document.getElementById('nextStepBtn');
-  if (nextStepBtn) {
-    nextStepBtn.addEventListener('click', () => {
-      if (currentStep < DATA.mapSteps.length - 1) {
-        currentStep++;
-        renderMapStep();
-      }
-    });
-  }
+  document.getElementById('nextStepBtn').addEventListener('click', () => {
+    if (currentStep < DATA.mapSteps.length - 1) {
+      currentStep++;
+      renderMapStep();
+    }
+  });
+
+  document.getElementById('prevStepBtn').addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--;
+      renderMapStep();
+    }
+  });
 
   renderMapStep();
 }
@@ -118,14 +122,20 @@ function renderMapStep() {
   document.getElementById('stepTitle').textContent = stepData.title;
   document.getElementById('stepDesc').textContent = stepData.desc;
   
-  const btn = document.getElementById('nextStepBtn');
+  const btnNext = document.getElementById('nextStepBtn');
+  const btnPrev = document.getElementById('prevStepBtn');
+
+  // Cập nhật trạng thái nút Tiếp
   if (currentStep === DATA.mapSteps.length - 1) {
-    btn.textContent = "Đã kết thúc diễn biến";
-    btn.disabled = true;
+    btnNext.textContent = "Đã kết thúc diễn biến";
+    btnNext.disabled = true;
   } else {
-    btn.textContent = "Tiếp tục diễn biến ➔";
-    btn.disabled = false;
+    btnNext.textContent = "Tiếp tục ➔";
+    btnNext.disabled = false;
   }
+
+  // Cập nhật trạng thái nút Quay lại
+  btnPrev.disabled = (currentStep === 0);
 
   map.flyTo(stepData.center, stepData.zoom, { duration: 1.5 });
 

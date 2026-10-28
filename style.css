@@ -145,7 +145,12 @@ h3 { font-size: 1.2rem; color: var(--primary); margin: 15px 0 10px; }
 .map-info-panel h3 { font-size: 1.4rem; color: var(--primary); margin-bottom: 15px; flex-shrink: 0; }
 .map-info-panel p { line-height: 1.7; color: var(--text-muted); margin-bottom: 20px; white-space: pre-line; } /* white-space để nhận diện dấu xuống dòng \n */
 
-.action-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.3s; margin-top: auto; flex-shrink: 0; }
+.map-controls { display: flex; gap: 10px; margin-top: auto; flex-shrink: 0; }
+.action-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: background 0.3s; flex: 1; }
+.action-btn:hover { background: #a0182f; }
+.action-btn:disabled { background: #555; cursor: not-allowed; }
+.btn-secondary { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
+.btn-secondary:hover:not(:disabled) { background: var(--gold); color: var(--bg); }
 .action-btn:hover { background: #a0182f; }
 .action-btn:disabled { background: #555; cursor: not-allowed; }
 
