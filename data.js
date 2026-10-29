@@ -17,41 +17,41 @@ const DATA = {
       center: [13.95, 108.65],
       zoom: 9,
       markers: [
-        { coords: [13.95, 108.65], type: "start", name: "Tây Sơn thượng đạo" }
+        { coords: [13.95, 108.65], type: "start", name: "Tây Sơn thượng đạo", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Quang_Trung_statue_02.jpg/400px-Quang_Trung_statue_02.jpg", desc: "Nơi phát tích của nhà Tây Sơn." }
       ],
       routes: []
     },
     {
-      title: "Bước 2: Mở rộng địa bàn, chiếm Quy Nhơn (1773-1774)",
-      desc: "Từ căn cứ Tây Sơn, nghĩa quân nhanh chóng tỏa xuống đồng bằng.\n\n• Tháng 9/1773: Nghĩa quân hạ phủ thành Quy Nhơn, tạo bước ngoặt quan trọng.\n• Năm 1774: Kiểm soát một vùng đất rộng lớn từ Quảng Nam đến Bình Thuận, uy hiếp mạnh chính quyền chúa Nguyễn ở Đàng Trong.",
+      title: "Bước 2: Mở rộng địa bàn (1773-1774)",
+      desc: "Từ căn cứ Tây Sơn, nghĩa quân nhanh chóng tỏa xuống đồng bằng.\n\n• Tháng 9/1773: Nghĩa quân hạ phủ thành Quy Nhơn, tạo bước ngoặt quan trọng.\n• Năm 1774: Kiểm soát một vùng đất rộng lớn từ Quảng Nam đến Bình Thuận.",
       center: [13.8, 108.9],
       zoom: 8,
       markers: [
-        { coords: [13.95, 108.65], type: "start", name: "Tây Sơn thượng đạo" },
-        { coords: [13.78, 109.22], type: "capital", name: "Phủ thành Quy Nhơn" }
+        { coords: [13.95, 108.65], type: "start", name: "Tây Sơn thượng đạo", desc: "Căn cứ ban đầu." },
+        { coords: [13.78, 109.22], type: "capital", name: "Phủ thành Quy Nhơn", desc: "Trung tâm chính trị - quân sự quan trọng bậc nhất miền Trung lúc bấy giờ." }
       ],
       routes: [ [ [13.95, 108.65], [13.78, 109.22] ] ]
     },
     {
       title: "Bước 3: Lật đổ chúa Nguyễn (1777-1778)",
-      desc: "Năm 1777, nghĩa quân Tây Sơn tiến vào Gia Định, lật đổ chính quyền chúa Nguyễn ở Đàng Trong.\n\n• Nguyễn Ánh sống sót, phải chạy sang Xiêm cầu viện.\n• Năm 1778, Nguyễn Nhạc lên ngôi hoàng đế, đóng đô tại thành Đồ Bàn (Bình Định), xây dựng chính quyền mới.",
+      desc: "Năm 1777, nghĩa quân Tây Sơn tiến vào Gia Định, lật đổ chính quyền chúa Nguyễn ở Đàng Trong.\n\n• Nguyễn Ánh sống sót, phải chạy sang Xiêm cầu viện.\n• Năm 1778, Nguyễn Nhạc lên ngôi hoàng đế, đóng đô tại thành Đồ Bàn.",
       center: [12.5, 107.5],
       zoom: 7,
       markers: [
-        { coords: [13.78, 109.22], type: "capital", name: "Quy Nhơn" },
-        { coords: [10.75, 106.75], type: "battle", name: "Gia Định" },
-        { coords: [13.85, 109.0], type: "capital", name: "Thành Đồ Bàn" }
+        { coords: [13.78, 109.22], type: "capital", name: "Quy Nhơn", desc: "Căn cứ địa." },
+        { coords: [10.75, 106.75], type: "battle", name: "Gia Định", desc: "Trung tâm của chúa Nguyễn bị quân Tây Sơn đánh chiếm." },
+        { coords: [13.85, 109.0], type: "capital", name: "Thành Đồ Bàn", desc: "Kinh đô của Nguyễn Nhạc (Thái Đức)." }
       ],
       routes: [ [ [13.78, 109.22], [10.75, 106.75] ] ]
     },
     {
       title: "Bước 4: Đánh tan quân Xiêm (1785)",
-      desc: "Lợi dụng Nguyễn Ánh cầu viện, cuối năm 1784, vua Xiêm sai Chiêu Tăng, Chiêu Sương đem 5 vạn quân theo đường thủy tiến vào Gia Định.\n\n• Tháng 1/1785: Nguyễn Huệ chọn khúc sông Tiền từ Rạch Gầm đến Xoài Mút làm trận địa mai phục.\n• Chiến thuật: Nghi binh, nhử địch vào sâu, thủy quân Tây Sơn chặn đánh từ nhiều hướng.\n• Kết quả: Đánh tan tác 5 vạn quân Xiêm, bảo vệ vững chắc bờ cõi phía Nam.",
+      desc: "Cuối năm 1784, vua Xiêm sai Chiêu Tăng, Chiêu Sương đem 5 vạn quân tiến vào Gia Định.\n\n• Tháng 1/1785: Nguyễn Huệ chọn khúc sông Tiền từ Rạch Gầm đến Xoài Mút làm trận địa mai phục.\n• Chiến thuật: Nghi binh, nhử địch vào sâu, thủy quân Tây Sơn chặn đánh từ nhiều hướng.\n• Kết quả: Đánh tan tác 5 vạn quân Xiêm, bảo vệ vững chắc bờ cõi phía Nam.",
       center: [11.0, 106.5],
       zoom: 8,
       markers: [
-        { coords: [10.75, 106.75], type: "capital", name: "Gia Định" },
-        { coords: [10.35, 106.35], type: "battle", name: "Rạch Gầm - Xoài Mút" }
+        { coords: [10.75, 106.75], type: "capital", name: "Gia Định", desc: "Bị quân Xiêm chiếm đóng." },
+        { coords: [10.35, 106.35], type: "battle", name: "Rạch Gầm - Xoài Mút", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Quang_Trung_statue%2C_Dong_Da_mound%2C_Hanoi.jpg/400px-Quang_Trung_statue%2C_Dong_Da_mound%2C_Hanoi.jpg", desc: "Trận thủy chiến vang danh, đánh tan quân Xiêm." }
       ],
       routes: [ [ [10.75, 106.75], [10.35, 106.35] ] ]
     },
@@ -61,9 +61,9 @@ const DATA = {
       center: [17.5, 106.5],
       zoom: 6,
       markers: [
-        { coords: [13.78, 109.22], type: "start", name: "Quy Nhơn" },
-        { coords: [16.47, 107.58], type: "battle", name: "Phú Xuân" },
-        { coords: [21.03, 105.85], type: "capital", name: "Thăng Long" }
+        { coords: [13.78, 109.22], type: "start", name: "Quy Nhơn", desc: "Xuất phát." },
+        { coords: [16.47, 107.58], type: "capital", name: "Phú Xuân", desc: "Trung tâm chính trị của chúa Nguyễn, sau này là kinh đô của Quang Trung." },
+        { coords: [21.03, 105.85], type: "capital", name: "Thăng Long", desc: "Kinh đô của Lê - Trịnh." }
       ],
       routes: [ [ [13.78, 109.22], [16.47, 107.58], [21.03, 105.85] ] ]
     },
@@ -73,10 +73,10 @@ const DATA = {
       center: [19.5, 106.0],
       zoom: 7,
       markers: [
-        { coords: [16.47, 107.58], type: "capital", name: "Phú Xuân" },
-        { coords: [20.25, 105.97], type: "battle", name: "Tam Điệp - Biện Sơn" },
-        { coords: [21.03, 105.85], type: "capital", name: "Thăng Long" },
-        { coords: [20.95, 105.85], type: "battle", name: "Ngọc Hồi - Đống Đa" }
+        { coords: [16.47, 107.58], type: "capital", name: "Phú Xuân", desc: "Nơi Quang Trung lên ngôi." },
+        { coords: [20.25, 105.97], type: "battle", name: "Tam Điệp - Biện Sơn", desc: "Cửa ngõ phía Nam, nơi quân ta rút lui chiến lược và phản công." },
+        { coords: [21.03, 105.85], type: "capital", name: "Thăng Long", desc: "Bị quân Thanh chiếm đóng." },
+        { coords: [20.95, 105.85], type: "battle", name: "Ngọc Hồi - Đống Đa", img: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Tranh_H%C3%A0ng_Tr%E1%BB%91ng_-_Quang_Trung_ph%C3%A1_qu%C3%A2n_Thanh.jpg", desc: "Trận quyết chiến lịch sử, đánh tan 29 vạn quân Thanh." }
       ],
       routes: [ [ [16.47, 107.58], [20.25, 105.97], [20.95, 105.85] ] ]
     }

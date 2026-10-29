@@ -25,15 +25,9 @@ function updateNav() {
 
 function goToSlide(n) {
   if (n < 0 || n >= slides.length || n === currentSlide) return;
-  
   currentSlide = n;
-  
-  // Dịch chuyển cả dải băng sang trái (mỗi slide rộng 100vw)
   slidesWrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
-  
   updateNav();
-  
-  // Cập nhật lại bản đồ nếu đang ở Slide 4
   if (currentSlide === 3 && map) {
     setTimeout(() => map.invalidateSize(), 650); 
   }
@@ -125,7 +119,6 @@ function renderMapStep() {
   const btnNext = document.getElementById('nextStepBtn');
   const btnPrev = document.getElementById('prevStepBtn');
 
-  // Cập nhật trạng thái nút Tiếp
   if (currentStep === DATA.mapSteps.length - 1) {
     btnNext.textContent = "Đã kết thúc diễn biến";
     btnNext.disabled = true;
@@ -134,7 +127,6 @@ function renderMapStep() {
     btnNext.disabled = false;
   }
 
-  // Cập nhật trạng thái nút Quay lại
   btnPrev.disabled = (currentStep === 0);
 
   map.flyTo(stepData.center, stepData.zoom, { duration: 1.5 });
@@ -142,15 +134,35 @@ function renderMapStep() {
   mapLayers.forEach(layer => map.removeLayer(layer));
   mapLayers = [];
 
-  const makeIcon = (type) => L.divIcon({
-    className: 'custom-marker ' + type, html: '<div></div>', iconSize: [20, 20], iconAnchor: [10, 10]
-  });
+  const makeIcon = (type) => {
+    let emoji = '📍';
+    if (type === 'start') emoji = '🚩';
+    if (type === 'battle') emoji = '⚔️';
+    if (type === 'capital') emoji = '🏛️';
+    
+    return L.divIcon({
+      className: 'custom-emoji-marker',
+      html: `<div style="font-size: 24px; text-shadow: 0 0 6px #000, 0 0 10px #c41e3a;">${emoji}</div>`,
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+  };
+  
   const icons = { start: makeIcon('start'), battle: makeIcon('battle'), capital: makeIcon('capital') };
 
   stepData.markers.forEach(m => {
+    let popupContent = `<div style="text-align:center;">
+      <b style="color:#c41e3a; font-size:1.1rem;">${m.name}</b><br>
+      <p style="margin: 5px 0; font-size: 0.9rem;">${m.desc || ''}</p>`;
+      
+    if (m.img) {
+      popupContent += `<img src="${m.img}" style="width: 200px; border-radius: 5px; margin-top: 5px; border: 2px solid #d4af37;" alt="${m.name}">`;
+    }
+    popupContent += `</div>`;
+
     const marker = L.marker(m.coords, { icon: icons[m.type] })
       .addTo(map)
-      .bindPopup(`<b>${m.name}</b>`);
+      .bindPopup(popupContent);
     mapLayers.push(marker);
   });
 
